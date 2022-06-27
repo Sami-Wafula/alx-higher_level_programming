@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+""" This module defines a class 'Rectangle' """
+
 
 class Rectangle:
-    """add pass for print the class max {}"""
+    """ An empty class 'Rectangle'. """
     pass
