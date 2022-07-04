@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""
-This module implements a Rectangle object
-"""
+
+
+
 
 
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
