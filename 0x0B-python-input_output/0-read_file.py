@@ -3,5 +3,5 @@
 
 def read_line(filename=""):
     """open file"""
-    with open('my_file_0.txt', encoding="utf-8") as a:
+    with open(filename, encoding="utf-8") as a:
         read_data = a.read()
