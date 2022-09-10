@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-'''
-Prints all rows in the states table of a database.
+'''Prints all rows in the states table of a database with
+a name starting with 'N'.
 '''
 import sys
-import MySQLdb as sql
+import MySQLdb
 
 
 if __name__ == '__main__':
     if len(sys.argv) >= 4:
-        db_connection = sql.connect(
+        db_connection = MySQLdb.connect(
             host='localhost',
             port=3306,
             user=sys.argv[1],
@@ -16,9 +16,11 @@ if __name__ == '__main__':
             db=sys.argv[3]
         )
         cursor = db_connection.cursor()
-        cursor.execute('SELECT * FROM states ORDER BY id case=N;')
+        cursor.execute(
+            'SELECT * FROM states WHERE name IS NOT NULL AND' +
+            ' LEFT(CAST(name AS BINARY), 1) = "N" ORDER BY states.id ASC;'
+        )
         results = cursor.fetchall()
         for result in results:
             print(result)
         db_connection.close()
-
