@@ -16,7 +16,7 @@ if __name__ == '__main__':
             db=sys.argv[3]
         )
         cursor = db_connection.cursor()
-        state=sys.argv[4]
+        state_name = sys.argv[4]
         cursor.execute(
             'SELECT * FROM states WHERE CAST(name as BINARY) LIKE ' +
             'CAST("{}" AS BINARY) ORDER BY states.id ASC;'.format(state_name)
