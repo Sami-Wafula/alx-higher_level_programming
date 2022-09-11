@@ -15,13 +15,14 @@ if __name__ == '__main__':
         )
         cursor = db_connection.cursor()
         state = sys.argv[4]
-        cursor.execute(''SELECT cities.name FROM cities' +
+        cursor.execute(
+            'SELECT cities.name FROM cities' +
             ' INNER JOIN states ON cities.state_id = states.id' +
             ' WHERE CAST(states.name AS BINARY) = %s' +
             ' ORDER BY cities.id ASC;',
-            [state_name]'
+            [state]
             )
-        result = cursor.fetchall()
+        results = cursor.fetchall()
         for result in results:
             print(result)
-        db.connection.close()
+        db_connection.close()
