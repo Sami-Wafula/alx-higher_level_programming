@@ -2,12 +2,12 @@
 '''Prints all cities and their state in a database.
 '''
 import sys
-import MySQLdb
+import MySQLdb as b
 
 
 if __name__ == '__main__':
     if len(sys.argv) >= 4:
-        db_connection = MySQLdb.connect(
+        db_connection = b.connect(
             host='localhost',
             port=3306,
             user=sys.argv[1],
@@ -24,4 +24,3 @@ if __name__ == '__main__':
         for result in results:
             print(result)
         db_connection.close()
-             
