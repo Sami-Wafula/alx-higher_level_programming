@@ -1,20 +1,21 @@
 #!/usr/bin/python3
-'''script that takes state as an arg and lists all the cities of the arg
+'''Prints all cities of a given state in a database.
 '''
 import sys
-import MySQLdb as b
+import MySQLdb
 
 
 if __name__ == '__main__':
     if len(sys.argv) >= 5:
-        db_connection = b.connect(
+        db_connection = MySQLdb.connect(
             host='localhost',
+            port=3306,
             user=sys.argv[1],
-            password=sys.argv[2],
-            db=sys.argv[3],
+            passwd=sys.argv[2],
+            db=sys.argv[3]
         )
-        cursor = db_connection.cursor()
         state_name = sys.argv[4]
+        cursor = db_connection.cursor()
         cursor.execute(
             'SELECT cities.name FROM cities' +
             ' INNER JOIN states ON cities.state_id = states.id' +
@@ -23,6 +24,5 @@ if __name__ == '__main__':
             [state_name]
         )
         results = cursor.fetchall()
-        for result in results:
-            print(result)
+        print(', '.join(map(lambda x: x[0], results)))
         db_connection.close()
