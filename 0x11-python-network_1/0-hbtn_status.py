@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Fetch url"""
-import urlllib.request as request
+"""Fetches a given URL"""
+import urllib.request as request
 
 
 if __name__ == "__main__":
@@ -10,4 +10,4 @@ if __name__ == "__main__":
             print("Body response:")
             print("\t- type: {}".format(type(data)))
             print("\t- content: {}".format(data))
-            print("\t- utf8 content: {}".format(data.decoder("utf-8")))
+            print("\t- utf8 content: {}".format(data.decode("utf-8")))
